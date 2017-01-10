@@ -11,7 +11,7 @@
     <class>com.helmidev.entities.Shopping</class>
     <class>com.helmidev.entities.Supplier</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:C:\Users\hoben\Documents\NetBeansProjects\AppDMS\DB\dmsDB.sqlite"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:C:\Users\mayel-1\Documents\NetBeansProjects\javaFx\DMS\AppDMS\DB\dmsDB.sqlite"/>
       <property name="javax.persistence.jdbc.user" value=""/>
       <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
       <property name="javax.persistence.jdbc.password" value=""/>
