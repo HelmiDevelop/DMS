@@ -60,6 +60,7 @@ public class AddCustomerPresenter implements Initializable {
         customer.setFirstname(this.customerFirstName.getText());
         customer.setLastname(this.customerLastName.getText());
         customer.setEmail(this.customerEmailAdress.getText());
+        
 
         if (StringUtils.isEmpty(this.customerAmount.getText())) {
             customer.setAccount(0);
