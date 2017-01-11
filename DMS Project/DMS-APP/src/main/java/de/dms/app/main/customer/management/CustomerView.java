@@ -11,15 +11,7 @@ import com.airhacks.afterburner.views.FXMLView;
  *
  * @author mayel-1
  */
-public class AddCustomerView extends FXMLView {
-
-    @Override
-    public Object getPresenter() {
-        return super.getPresenter(); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-    
+public class CustomerView extends FXMLView{
     
     
 }

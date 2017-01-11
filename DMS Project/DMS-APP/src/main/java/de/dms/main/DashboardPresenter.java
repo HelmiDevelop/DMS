@@ -7,11 +7,17 @@ package de.dms.main;
 
 import de.dms.app.main.customer.management.AddCustomerPresenter;
 import de.dms.app.main.customer.management.AddCustomerView;
+import de.dms.app.main.customer.management.CustomerPresenter;
+import de.dms.app.main.customer.management.CustomerView;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -35,6 +41,7 @@ public class DashboardPresenter implements Initializable{
     @FXML private AnchorPane mainPanelAnchorPane;
     
     AddCustomerPresenter addCustomerPresenter;
+    CustomerPresenter customerPresenter;
     
     private ResourceBundle bundle;
 
@@ -97,12 +104,23 @@ public class DashboardPresenter implements Initializable{
         //TODO load add customer view
         AddCustomerView addCustomerView = new AddCustomerView();
         this.addCustomerPresenter = (AddCustomerPresenter) addCustomerView.getPresenter();
+        this.mainView.set(addCustomerView.getView());
+        this.mainPanelAnchorPane.getChildren().clear();
         this.mainPanelAnchorPane.getChildren().add(addCustomerView.getView());
         System.out.println(event.getSource().toString());
     }
 
+    ObjectProperty<Node> mainView = new SimpleObjectProperty<>(this, "dashboard", null);
+    
     private void onViewAllCustomers(ActionEvent event) {
         //TODO load customer table
+        CustomerView customerView = new CustomerView();
+        this.customerPresenter = (CustomerPresenter) customerView.getPresenter();
+        this.mainView.set(customerView);
+        this.mainPanelAnchorPane.getChildren().clear();
+        this.mainPanelAnchorPane.getChildren().add(customerView.getView());
+        
+        
         System.out.println(event.getSource().toString());
     }
 

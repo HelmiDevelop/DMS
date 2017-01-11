@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
@@ -36,6 +37,9 @@ public class AddCustomerPresenter implements Initializable {
     private TextField customerEmailAdress;
     @FXML
     private TextField customerAmount;
+    @FXML
+    private Label addmessage;
+    
     @FXML
     private Button saveCustomer;
 
@@ -68,6 +72,20 @@ public class AddCustomerPresenter implements Initializable {
         }
         try {
             this.customerService.addCustomer(customer);
+            Alert info = new Alert(AlertType.CONFIRMATION);
+            info.setTitle("Confirmation");
+            info.setHeaderText("Speichern erfolgreich");
+            String msg = String.format("Kunde %1s wurde hinzugefügt", customerFirstName.getText() + " "+customerLastName.getText());
+                    addmessage.setText(msg);
+                    
+            info.setContentText(msg);
+            info.showAndWait().ifPresent(rs -> {
+                if (rs == ButtonType.OK) {
+                    System.out.println("Pressed OK.");
+                }
+            });
+            
+           
         } catch (Exception ex) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
