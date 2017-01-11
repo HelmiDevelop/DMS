@@ -33,10 +33,10 @@
             <Label text="%lbl_customerLastName" GridPane.rowIndex="1" />
             <Label text="%lbl_customerEmailAdress" GridPane.rowIndex="2" />
             <Label text="%lbl_customerAmount" GridPane.rowIndex="3" />
-            <TextField id="customerFirstName" GridPane.columnIndex="1" />
-            <TextField id="CustomerLastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField id="CustomerEmailAdress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField id="customerAmount" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField id="customerFirstName" fx:id="customerFirstName" GridPane.columnIndex="1" />
+            <TextField id="CustomerLastName" fx:id="customerLastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField id="CustomerEmailAdress" fx:id="customerEmailAdress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField id="customerAmount" fx:id="customerAmount" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="425.0" minWidth="10.0" prefWidth="320.0" />
@@ -48,7 +48,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Button id="addCustomerBtn" fx:id="addCustomerBtn" mnemonicParsing="false" onAction="#onCustomerAddClick" prefHeight="31.0" prefWidth="100.0" text="%lbl_addCustomer">
+                        <Button id="addCustomerBtn" fx:id="saveCustomer" mnemonicParsing="false" prefHeight="31.0" prefWidth="100.0" text="%lbl_addCustomer">
                            <HBox.margin>
                               <Insets right="3.0" top="3.0" />
                            </HBox.margin>

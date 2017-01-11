@@ -5,6 +5,8 @@
  */
 package de.dms.main;
 
+import de.dms.app.main.customer.management.AddCustomerPresenter;
+import de.dms.app.main.customer.management.AddCustomerView;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -12,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 /**
  *
  * @author mayel-1
@@ -29,6 +32,9 @@ public class DashboardPresenter implements Initializable{
     
     @FXML private Button btnAddNewCustomer;
     @FXML private Button btnViewAllCustomers;
+    @FXML private AnchorPane mainPanelAnchorPane;
+    
+    AddCustomerPresenter addCustomerPresenter;
     
     private ResourceBundle bundle;
 
@@ -89,6 +95,9 @@ public class DashboardPresenter implements Initializable{
 
     private void onAddNewCustomer(ActionEvent event) {
         //TODO load add customer view
+        AddCustomerView addCustomerView = new AddCustomerView();
+        this.addCustomerPresenter = (AddCustomerPresenter) addCustomerView.getPresenter();
+        this.mainPanelAnchorPane.getChildren().add(addCustomerView.getView());
         System.out.println(event.getSource().toString());
     }
 
