@@ -1,0 +1,87 @@
+CREATE TABLE "Billing" (
+  "id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE ,
+   "name" VARCHAR NOT NULL  ,
+   "description" TEXT,
+   "date" DATETIME NOT NULL,
+   "amount" DOUBLE NOT NULL,
+   "customerId" INTEGER NOT NULL,
+   FOREIGN KEY (customerId) REFERENCES Customer (id)
+  );
+  
+CREATE TABLE "Billingdetail" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+  "billingId" INTEGER NOT NULL,
+  "productId" INTEGER NOT NULL,
+  "quantity" INTEGER NOT NULL,
+  "subtotal" DOUBLE NOT NULL,
+  FOREIGN KEY (billingId) REFERENCES Billing (id),
+  FOREIGN KEY (productId) REFERENCES Product (id)
+  );
+
+CREATE TABLE "Category" (
+  "id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, 
+  "name" VARCHAR NOT NULL  UNIQUE,
+  "description" TEXT
+  );
+
+CREATE TABLE "Customer" (
+  "id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, 
+  "firstname" VARCHAR NOT NULL , "lastname" VARCHAR NOT NULL, 
+  "email" VARCHAR NOT NULL  UNIQUE,
+  "account" DOUBLE NOT NULL 
+  );
+
+CREATE TABLE "Packaging" (
+  "id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, 
+  "name" VARCHAR NOT NULL  UNIQUE, 
+  "description" TEXT,
+  "size" INTEGER NOT NULL, 
+  "price" DOUBLE NOT NULL, 
+  "isPledge" BOOL NOT NULL, 
+  "pledgeValue" DOUBLE
+  );
+  
+CREATE TABLE "Product" (
+   "id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE ,
+   "name" VARCHAR NOT NULL  UNIQUE ,
+   "description" TEXT,
+   "sPrice" DOUBLE NOT NULL,
+   "pPrice" DOUBLE NOT NULL,
+   "unitSpan" DOUBLE NOT NULL,
+   "isPledge" BOOL NOT NULL,
+   "pledgeValue" DOUBLE,
+   "categoryId" INTEGER,
+   "packagingId" INTEGER,
+   FOREIGN KEY (categoryId) REFERENCES Category (id),
+   FOREIGN KEY (packagingId) REFERENCES Packaging (id)
+  );
+  
+CREATE TABLE "Shopping" (
+   "id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE,
+   "name" VARCHAR NOT NULL,
+   "description" TEXT,
+   "date" DATETIME NOT NULL,                                                                                                      A
+   "amount" DOUBLE NOT NULL,
+   "customerId" INTEGER ,
+   "supplierId" INTEGER,
+   FOREIGN KEY (supplierId) REFERENCES Supplier (id),
+   FOREIGN KEY (customerId) REFERENCES Customer (id)
+  );
+
+CREATE TABLE "Shoppingdetail" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+  "shoppingId" INTEGER NOT NULL,
+  "productId" INTEGER NOT NULL,
+  "quantity" INTEGER NOT NULL,
+  "subtotal" DOUBLE NOT NULL,
+  FOREIGN KEY (shoppingId) REFERENCES Shopping (id),
+  FOREIGN KEY (productId) REFERENCES Product (id)
+  );
+CREATE TABLE "Supplier" (
+  "id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , 
+  "name" VARCHAR NOT NULL  UNIQUE , 
+  "description" TEXT, 
+  "email" VARCHAR, 
+  "adress" VARCHAR, 
+  "phone" VARCHAR
+  );
