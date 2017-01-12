@@ -61,8 +61,8 @@ public class AddCustomerPresenter implements Initializable {
 
     private void onCustomerSaveClick(ActionEvent event) {
         Customer customer = new Customer();
-        customer.setFirstname(this.customerFirstName.getText());
-        customer.setLastname(this.customerLastName.getText());
+        customer.setFirst_name(this.customerFirstName.getText());
+        customer.setLast_name(this.customerLastName.getText());
         customer.setEmail(this.customerEmailAdress.getText());
         
 
