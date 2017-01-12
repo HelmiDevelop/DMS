@@ -116,7 +116,7 @@ public class CustomerPresenter implements Initializable{
                     System.out.println("Pressed OK.");
                 }
             });
-            Logger.getLogger(AddCustomerPresenter.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
 
         System.out.println(event.getSource().toString());

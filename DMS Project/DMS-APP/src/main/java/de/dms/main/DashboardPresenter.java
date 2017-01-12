@@ -5,7 +5,6 @@
  */
 package de.dms.main;
 
-import de.dms.app.main.customer.management.AddCustomerPresenter;
 import de.dms.app.main.customer.management.CustomerPresenter;
 import de.dms.app.main.customer.management.CustomerView;
 import java.net.URL;
@@ -47,7 +46,6 @@ public class DashboardPresenter implements Initializable {
     @FXML
     private StackPane mainPanelAnchorPane;
 
-    AddCustomerPresenter addCustomerPresenter;
     CustomerPresenter customerPresenter;
 
     private ResourceBundle bundle;
