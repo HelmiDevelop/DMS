@@ -62,8 +62,14 @@ public class CustomerPresenter implements Initializable{
         
         saveCustomerButton.setOnAction((ActionEvent event) -> {
             onCustomerSaveClick(event);
-        });
-        // initialize buttons event
+        });        
+        initializeCustomerTableView();        
+    }
+    /**
+     * initialize the customer list table and set data
+     */
+    private void initializeCustomerTableView(){
+        
         idcolumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstname.setCellValueFactory(new PropertyValueFactory<>("first_name"));
         lastName.setCellValueFactory(new PropertyValueFactory<>("last_name"));
@@ -72,7 +78,6 @@ public class CustomerPresenter implements Initializable{
         customerData =  FXCollections.observableArrayList();
         customerData.addAll(customerService.getAllCustomer());
         customersTable.setItems(customerData);
-        
         
     }
     
@@ -90,19 +95,17 @@ public class CustomerPresenter implements Initializable{
         }
         try {
             this.customerService.addCustomer(customer);
+            initializeCustomerTableView();
             Alert info = new Alert(Alert.AlertType.CONFIRMATION);
             info.setTitle("Confirmation");
             info.setHeaderText("Speichern erfolgreich");
             String msg = String.format("Kunde %1s wurde hinzugefügt", customerFirstName.getText() + " "+customerLastName.getText());
-                 
-                    
             info.setContentText(msg);
             info.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
                     System.out.println("Pressed OK.");
                 }
-            });
-            
+            });           
            
         } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
