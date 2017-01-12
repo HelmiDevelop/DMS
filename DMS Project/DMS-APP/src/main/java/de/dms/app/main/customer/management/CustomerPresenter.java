@@ -85,8 +85,7 @@ public class CustomerPresenter implements Initializable{
         Customer customer = new Customer();
         customer.setFirst_name(this.customerFirstName.getText());
         customer.setLast_name(this.customerLastName.getText());
-        customer.setEmail(this.customerEmailAdress.getText());
-        
+        customer.setEmail(this.customerEmailAdress.getText());        
 
         if (StringUtils.isEmpty(this.customerAmount.getText())) {
             customer.setAccount(0);

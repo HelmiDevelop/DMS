@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
 /**
@@ -31,11 +33,16 @@ public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull(message = "Vorname kann nicht NULL sein")
+    @Size(min = 2, max = 55, message = "Vorname Länge darf nicht kürzer als 2 zeichen oder länger als 55 Zeichen")
     @Column(name = "customer_First_Name")
     private String first_name;
+    @Size(min = 2, max = 55, message = "Nachname Länge darf nicht kürzer als 2 zeichen oder länger als 55 Zeichen")
+    @NotNull(message = "Nachname kann nicht NULL sein ")
     @Column(name = "customer_Last_Name")
     private String last_name;
-    @NotNull
+    @NotNull(message = "Email Adresse kann nicht NULL sein")   
+    @Pattern(regexp = "^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$", message = "Bitte geben Sie eine gültige Email Adresse")
     @Column(name = "customer_Email", unique = true)
     private String email;
     @Column(name = "customer_Account")
