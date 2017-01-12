@@ -10,6 +10,7 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="AnchorPane" prefHeight="597.0" prefWidth="1151.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.dms.main.DashboardPresenter">
@@ -101,11 +102,6 @@
                                             <children>
                                                 <VBox layoutX="14.0" prefHeight="426.0" prefWidth="270.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                     <children>
-                                                        <Button id="btnNewCustomer" fx:id="btnAddNewCustomer" mnemonicParsing="false" prefHeight="31.0" prefWidth="258.0" text="%lbl_add_new_customer">
-                                                            <VBox.margin>
-                                                                <Insets bottom="3.0" />
-                                                            </VBox.margin>
-                                                        </Button>
                                                         <Button id="btnViewAllCustomers" fx:id="btnViewAllCustomers" mnemonicParsing="false" prefHeight="31.0" prefWidth="265.0" text="%lbl_view_all_customers">
                                                             <VBox.margin>
                                                                 <Insets bottom="3.0" />
@@ -119,7 +115,10 @@
                                 </TitledPane>
                             </panes>
                         </Accordion>
-                        <AnchorPane id="mainpanel" fx:id="mainPanelAnchorPane" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <AnchorPane id="mainpanel" HBox.hgrow="ALWAYS">
+                     <children>
+                        <StackPane fx:id="mainPanelAnchorPane" layoutX="61.0" layoutY="54.0" prefHeight="520.0" prefWidth="879.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children></AnchorPane>
                     </children>
                 </HBox>
             </children>

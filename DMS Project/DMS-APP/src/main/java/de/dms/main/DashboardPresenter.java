@@ -6,83 +6,90 @@
 package de.dms.main;
 
 import de.dms.app.main.customer.management.AddCustomerPresenter;
-import de.dms.app.main.customer.management.AddCustomerView;
 import de.dms.app.main.customer.management.CustomerPresenter;
 import de.dms.app.main.customer.management.CustomerView;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+
 /**
  *
  * @author mayel-1
  */
-public class DashboardPresenter implements Initializable{
-    @FXML private Button btn_toolbar_createNewCustomer;
-    @FXML private Button btnAddNewBilling;
-    @FXML private Button btnViewAllBillings;
-    
-    @FXML private Button btnAddNewProduct;
-    @FXML private Button btnViewAllProducts;
-    
-    @FXML private Button btnAddNewPackaging;
-    @FXML private Button btnViewAllPackagings;
-    
-    @FXML private Button btnAddNewCustomer;
-    @FXML private Button btnViewAllCustomers;
-    @FXML private AnchorPane mainPanelAnchorPane;
-    
+public class DashboardPresenter implements Initializable {
+
+    @FXML
+    private Button btn_toolbar_createNewCustomer;
+    @FXML
+    private Button btnAddNewBilling;
+    @FXML
+    private Button btnViewAllBillings;
+
+    @FXML
+    private Button btnAddNewProduct;
+    @FXML
+    private Button btnViewAllProducts;
+
+    @FXML
+    private Button btnAddNewPackaging;
+    @FXML
+    private Button btnViewAllPackagings;
+
+    @FXML
+    private Button btnAddNewCustomer;
+    @FXML
+    private Button btnViewAllCustomers;
+    @FXML
+    private StackPane mainPanelAnchorPane;
+
     AddCustomerPresenter addCustomerPresenter;
     CustomerPresenter customerPresenter;
-    
+
     private ResourceBundle bundle;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        bundle = resources;
+    public void initialize(URL location, ResourceBundle resources) {        
+        bundle = resources;        
         // set programmatically
         //btn_toolbar_createNewCustomer.setText(bundle.getString("lbl_btn_toolbar_createNewCustomer"));
-        
-        btn_toolbar_createNewCustomer.setOnAction((ActionEvent event) -> {
+
+        /*btn_toolbar_createNewCustomer.setOnAction((ActionEvent event) -> {
             onAddNewCustomer(event);
-        });
+        });*/
         btnAddNewBilling.setOnAction((ActionEvent event) -> {
             onAddNewBilling(event);
         });
         btnViewAllBillings.setOnAction((ActionEvent actionEvent) -> {
             onViewAllBillings(actionEvent);
         });
-        btnAddNewProduct.setOnAction((ActionEvent event) ->{
+        btnAddNewProduct.setOnAction((ActionEvent event) -> {
             onAddNewProduct(event);
         });
-        btnViewAllProducts.setOnAction((ActionEvent event)-> {
+        btnViewAllProducts.setOnAction((ActionEvent event) -> {
             onViewAllProducts(event);
         });
-        btnAddNewCustomer.setOnAction((ActionEvent actionEvent)->{
+        /*btnAddNewCustomer.setOnAction((ActionEvent actionEvent)->{
             onAddNewCustomer(actionEvent);
-        });
+        });*/
         btnViewAllCustomers.setOnAction((ActionEvent event) -> {
             onViewAllCustomers(event);
         });
         btnAddNewPackaging.setOnAction((ActionEvent event) -> {
             onAddNewPackaging(event);
-        });        
+        });
         btnViewAllPackagings.setOnAction((ActionEvent event) -> {
             onViewAllPackagings(event);
         });
     }
-    
+
     private void onAddNewBilling(ActionEvent event) {
         //TODO load add new billing view
-         System.out.println(event.getSource().toString());
+        System.out.println(event.getSource().toString());
     }
 
     private void onViewAllBillings(ActionEvent event) {
@@ -100,38 +107,33 @@ public class DashboardPresenter implements Initializable{
         System.out.println(event.getSource().toString());
     }
 
-    private void onAddNewCustomer(ActionEvent event) {
+    /*private void onAddNewCustomer(ActionEvent event) {
         //TODO load add customer view
         AddCustomerView addCustomerView = new AddCustomerView();
         this.addCustomerPresenter = (AddCustomerPresenter) addCustomerView.getPresenter();
-        this.mainView.set(addCustomerView.getView());
         this.mainPanelAnchorPane.getChildren().clear();
         this.mainPanelAnchorPane.getChildren().add(addCustomerView.getView());
         System.out.println(event.getSource().toString());
-    }
-
-    ObjectProperty<Node> mainView = new SimpleObjectProperty<>(this, "dashboard", null);
-    
+    }*/
     private void onViewAllCustomers(ActionEvent event) {
         //TODO load customer table
         CustomerView customerView = new CustomerView();
+        Parent view = customerView.getView();        
         this.customerPresenter = (CustomerPresenter) customerView.getPresenter();
-        this.mainView.set(customerView);
         this.mainPanelAnchorPane.getChildren().clear();
-        this.mainPanelAnchorPane.getChildren().add(customerView.getView());
-        
-        
+        this.mainPanelAnchorPane.getChildren().add(view);
+
         System.out.println(event.getSource().toString());
     }
 
     private void onAddNewPackaging(ActionEvent event) {
         //TODO load add new packaging
-         System.out.println(event.getSource().toString());
+        System.out.println(event.getSource().toString());
     }
 
     private void onViewAllPackagings(ActionEvent event) {
         //TODO load packaging table
-         System.out.println(event.getSource().toString());
+        System.out.println(event.getSource().toString());
     }
-    
+
 }
