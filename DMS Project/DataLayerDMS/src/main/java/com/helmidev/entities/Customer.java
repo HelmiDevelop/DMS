@@ -34,15 +34,15 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotNull(message = "Vorname kann nicht NULL sein")
-    @Size(min = 2, max = 55, message = "Vorname Länge darf nicht kürzer als 2 zeichen oder länger als 55 Zeichen")
+    @Size(min = 2, max = 55, message = "Vorname darf nicht kürzer als 2 zeichen oder länger als 55 Zeichen sein")
     @Column(name = "customer_First_Name")
     private String first_name;
-    @Size(min = 2, max = 55, message = "Nachname Länge darf nicht kürzer als 2 zeichen oder länger als 55 Zeichen")
+    @Size(min = 2, max = 55, message = "Nachname darf nicht kürzer als 2 zeichen oder länger als 55 Zeichen sein")
     @NotNull(message = "Nachname kann nicht NULL sein ")
     @Column(name = "customer_Last_Name")
     private String last_name;
     @NotNull(message = "Email Adresse kann nicht NULL sein")   
-    @Pattern(regexp = "^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$", message = "Bitte geben Sie eine gültige Email Adresse")
+    @Pattern(regexp = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])", message = "Bitte geben Sie eine gültige Email Adresse")
     @Column(name = "customer_Email", unique = true)
     private String email;
     @Column(name = "customer_Account")

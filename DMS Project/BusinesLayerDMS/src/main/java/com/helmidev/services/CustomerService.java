@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
+import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
@@ -34,11 +35,15 @@ public class CustomerService {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         try {
+            String validationMsg = "";
             Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
             if(!violations.isEmpty()){
                 for (ConstraintViolation<Customer> violation : violations) {
                     System.out.println(violation.getMessage());
+                    validationMsg += "->"+violation.getMessage() + "\n";
                 }
+                throw new ValidationException(validationMsg);
+                
             }else{
                 customerJpa.create(customer);
             }            

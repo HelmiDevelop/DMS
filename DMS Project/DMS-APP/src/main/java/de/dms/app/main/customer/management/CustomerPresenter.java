@@ -108,8 +108,8 @@ public class CustomerPresenter implements Initializable{
            
         } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Customer Error");
+            alert.setTitle("Fehler");
+            alert.setHeaderText("Fehler beim Hinzufügen");
             alert.setContentText(ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
