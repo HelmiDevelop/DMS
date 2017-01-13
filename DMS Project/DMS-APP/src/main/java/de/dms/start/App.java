@@ -24,6 +24,8 @@ import com.airhacks.afterburner.injection.Injector;
 import de.dms.main.DashboardView;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -34,8 +36,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        
+    
         try {
+            BorderPane root = new BorderPane(new Label("Loading complete!"));
             DashboardView mainView = new DashboardView();
             //DashboardView appView = new DashboardView();
             Scene scene = new Scene(mainView.getView());
@@ -55,6 +58,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        DMSPreloader.launch(App.class, args);
+        //launch(args);
     }
 }

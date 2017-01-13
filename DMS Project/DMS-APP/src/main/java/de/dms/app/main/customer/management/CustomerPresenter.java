@@ -9,8 +9,6 @@ import com.helmidev.entities.Customer;
 import com.helmidev.services.CustomerService;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -54,21 +52,19 @@ public class CustomerPresenter implements Initializable{
     
     @Inject
     CustomerService customerService;
-    
-     
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        //DMSPreloader.launch(App.class);
         saveCustomerButton.setOnAction((ActionEvent event) -> {
             onCustomerSaveClick(event);
         });        
-        initializeCustomerTableView();        
+        //initializeCustomerTableView();        
     }
     /**
      * initialize the customer list table and set data
      */
-    private void initializeCustomerTableView(){
+    public void initializeCustomerTableView(){
         
         idcolumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstname.setCellValueFactory(new PropertyValueFactory<>("first_name"));
@@ -95,7 +91,7 @@ public class CustomerPresenter implements Initializable{
         try {
             this.customerService.addCustomer(customer);
             initializeCustomerTableView();
-            Alert info = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert info = new Alert(Alert.AlertType.INFORMATION);
             info.setTitle("Confirmation");
             info.setHeaderText("Speichern erfolgreich");
             String msg = String.format("Kunde %1s wurde hinzugefügt", customerFirstName.getText() + " "+customerLastName.getText());
@@ -110,13 +106,13 @@ public class CustomerPresenter implements Initializable{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Fehler");
             alert.setHeaderText("Fehler beim Hinzufügen");
+            //String msg = ex.getMessage().replace("->", "<i class='thumbs-down-icon'></i>");
             alert.setContentText(ex.getMessage());
             alert.showAndWait().ifPresent(rs -> {
                 if (rs == ButtonType.OK) {
                     System.out.println("Pressed OK.");
                 }
-            });
-            
+            });            
         }
 
         System.out.println(event.getSource().toString());

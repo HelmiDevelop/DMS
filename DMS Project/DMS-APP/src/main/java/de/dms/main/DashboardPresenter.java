@@ -5,10 +5,15 @@
  */
 package de.dms.main;
 
+import de.dms.app.main.customer.management.CustomerConsumer;
 import de.dms.app.main.customer.management.CustomerPresenter;
 import de.dms.app.main.customer.management.CustomerView;
+import de.dms.app.main.product.management.ProductPresenter;
+import de.dms.app.main.product.management.ProductView;
+import de.dms.start.DMSPreloader;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,6 +52,9 @@ public class DashboardPresenter implements Initializable {
     private StackPane mainPanelAnchorPane;
 
     CustomerPresenter customerPresenter;
+    ProductPresenter productPresenter;
+    
+    private Consumer<CustomerPresenter> customerconsumer;
 
     private ResourceBundle bundle;
 
@@ -102,6 +110,11 @@ public class DashboardPresenter implements Initializable {
 
     private void onViewAllProducts(ActionEvent event) {
         //TOD load product table.
+        ProductView productView = new ProductView();
+        Parent view = productView.getView();
+        productPresenter = (ProductPresenter)productView.getPresenter();
+        this.mainPanelAnchorPane.getChildren().clear();
+        this.mainPanelAnchorPane.getChildren().add(view);
         System.out.println(event.getSource().toString());
     }
 
@@ -116,12 +129,22 @@ public class DashboardPresenter implements Initializable {
     private void onViewAllCustomers(ActionEvent event) {
         //TODO load customer table
         CustomerView customerView = new CustomerView();
-        Parent view = customerView.getView();        
-        this.customerPresenter = (CustomerPresenter) customerView.getPresenter();
+        Parent view = customerView.getView();       
+        
+        Consumer<Object> presenterConsumer = this::consume;
+        customerView.getPresenter(presenterConsumer);
         this.mainPanelAnchorPane.getChildren().clear();
         this.mainPanelAnchorPane.getChildren().add(view);
+        
 
         System.out.println(event.getSource().toString());
+    }
+    private void consume(Object presenter){
+        if(presenter instanceof CustomerPresenter){
+            this.customerPresenter = (CustomerPresenter)presenter;
+            //customerPresenter.initializeCustomerTableView();
+        }
+        
     }
 
     private void onAddNewPackaging(ActionEvent event) {

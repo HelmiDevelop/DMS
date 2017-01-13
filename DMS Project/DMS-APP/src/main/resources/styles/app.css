@@ -50,3 +50,12 @@
 .text {
     -fx-font-smoothing-type: lcd;
 }
+.thumbs-up-icon{
+   -glyph-name: "THUMBS_UP";
+   -glyph-size: 6em;
+ }
+ 
+ .thumbs-down-icon{
+   -glyph-name: "THUMBS_DOWN";
+   -glyph-size: 6em;
+ }
