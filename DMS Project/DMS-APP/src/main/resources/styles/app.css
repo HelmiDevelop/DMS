@@ -59,3 +59,7 @@
    -glyph-name: "THUMBS_DOWN";
    -glyph-size: 6em;
  }
+ .addBillingBtn{
+    -fx-graphic:url(../images/ic_content_paste_black_24dp.png)
+    
+}
